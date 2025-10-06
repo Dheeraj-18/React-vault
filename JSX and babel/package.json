@@ -1,0 +1,18 @@
+{
+  "name": "jsx-and-babel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bable.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel ./script.js -d lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-react": "^7.27.1"
+  }
+}
