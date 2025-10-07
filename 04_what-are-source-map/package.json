@@ -5,7 +5,7 @@
   "main": "bable.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel ./script.js -d lib"
+    "build": "babel ./script.js -d lib --source-maps"
   },
   "keywords": [],
   "author": "",
