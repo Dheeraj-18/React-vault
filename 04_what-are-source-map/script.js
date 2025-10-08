@@ -18,7 +18,7 @@
 // NOTE_6: and there is a another senario even if add source map and generate a map file but if we disable setting from the browser i.e javascript
 //         source map so browser never send the request of this map even if we add a source map url 
 
-// NOTE_7: Second way to add source map => add another key-pair in the .babelrc file i.e "sourceMaps":true  and run npm run build it add a map file in 
+// NOTE_7: Second way: to add source map => add another key-pair in the .babelrc file i.e "sourceMaps":true  and run npm run build it add a map file in 
 //         lib folder 
 
 // NOTE_8: build": "babel ./script.js -d lib --watch"      this command run and we write our code and compile continuously without run every time
