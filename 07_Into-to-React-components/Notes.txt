@@ -2,7 +2,7 @@
 
 // Note-1: Earlier we render multiple react elements using javascript reusable function but the problem is when we pass the argument into that
 //         function while calling it must maintain the order of argument So , this problem can be solve by two way, one is passing argument as
-//         Object (named called props) Here passing in any order doesn't matter and Destruction it and another way is by React Components
+//         Object (named called props) Here passing in any order doesn't matter and Destructure it and another way is by React Components
 
 // Note-2: {
 //           $$typeof: Symbol.for('react.element'),
@@ -32,11 +32,11 @@
 //                },
 //              }
 
-// React Component: Yey above is a React components SO react element which has 'type' function which return a JSX i.e React element
+// React Component: Yey above is a React components SO react element which has 'type' function which return a JSX that React element
 //                  is called React Component
-//       << The above line is Magic line which impress the interviewer show you inDepth Knowledge about React >>
+//       << The above line is Magic line which impress the interviewer show your inDepth Knowledge about React >>
 
-// Actual Definition : React Component is a javascript Function which name with capital latter which return a JSX that is called
+// Actual Definition : React Component is a javascript Function which name usually with capital latter which return a JSX that is called
 //                     React component Or form visual perspective Reusable piece of UI called react component
 //
 
