@@ -1,0 +1,55 @@
+//                     <<<       SUMMARY NOTES: React Components    >>>
+
+// Note-1: Earlier we render multiple react elements using javascript reusable function but the problem is when we pass the argument into that
+//         function while calling it must maintain the order of argument So , this problem can be solve by two way, one is passing argument as
+//         Object (named called props) Here passing in any order doesn't matter and Destruction it and another way is by React Components
+
+// Note-2: {
+//           $$typeof: Symbol.for('react.element'),
+//            type:'h1',
+//           ref: null,
+//            props: {
+//             children: 'Hello World',
+//             },
+//         }
+// Above properties are important and bare minimum to create a react Element Successfully without any Error , But Here 'type' property value if
+// string it create a DOM elements of h1 type and all the props set as a attribute on that h1 element
+
+// NOTE-3: But if 'type' value is function means not function call only function name i.e Card so in this case render method call this function
+//         with passing the prop object as a arguments to that function which give in 'type' property
+
+// NOTE-4: one-way : react component
+//          {
+//              $$typeof: Symbol.for('react.element'),
+//                type: Card,
+//                ref: null,
+//                props: {
+//                     title: 'Essence Mascara Lash Princess',
+//                     image:'https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp',
+//                     brand: 'Essence',
+//                     price: 9.99,
+//                     key: 12,
+//                },
+//              }
+
+// React Component: Yey above is a React components SO react element which has 'type' function which return a JSX i.e React element
+//                  is called React Component
+//       << The above line is Magic line which impress the interviewer show you inDepth Knowledge about React >>
+
+// Actual Definition : React Component is a javascript Function which name with capital latter which return a JSX that is called
+//                     React component Or form visual perspective Reusable piece of UI called react component
+//
+
+// Note-5 : second-way :  we also do it same using React.createElement() refer---->  component.png
+
+// Note-6 : Third-way : crate React components using JSX and it work same behind the seem as React.createElement. refer -- compo-note2.png
+//       <Card
+//           title={product.title}
+//           key={product.id}
+//           brand={product.brand}
+//           price={product.price}
+//           category={product.category}
+//           image={product.thumbnail}
+//           description={product.description}
+//         />
+// ___________________________________________________________________________________________________________________________________
