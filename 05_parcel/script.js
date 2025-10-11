@@ -15,7 +15,7 @@
 //         own generated .js file and .js.map file included and it serve that index.html file on browser with and in script src there .js file
 //
 // Note-5: Parcel do many things first start a Dev Server and second HOT Reloading i.e changes are automatic update on browser but
-//         we do same with normal live server extension but in that everytime change reload complete page But here there is a concept
+//         we do same with normal live server extension but in that every time change reload complete page But here there is a concept
 //         Called HMR (Hot module Replacement) using this all changes update on browser without page reload.  For using this add some
 //         code in our js file to use this facility. if(module.hot){ module.hot.accept()} and another thing parcel do Diagnostic do various
 //         things tree shaking , minification , code splitting , image optimization ...
