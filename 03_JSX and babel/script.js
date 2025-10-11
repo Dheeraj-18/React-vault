@@ -35,7 +35,7 @@
 // build": "babel src -d lib     < adding this into our package.json scripts and give our file path and here output file name is lib
 // npm run build                 < show error SyntaxError: C:\Users\Dheeraj\OneDrive\Desktop\Webdev25\React-js\JSX and babel\script.js:
 //                                  Support for the experimental syntax 'jsx' isn't currently enabled >
-//                               <fix it by adding file .bable.rc and add some code so this is babel config file
+//                               <fix it by adding file .babel.rc and add some code so this is babel config file
 //                                     {
 //                                          "presets": ["@babel/preset-env", "@babel/preset-react"]
 //                                                                     }
