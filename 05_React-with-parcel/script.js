@@ -4,7 +4,7 @@
 //         Using CDN but inPractice this not good way , We use Bundlers which Bundle all necessary fils and make a single file and
 //         serve on browser . SO yes Parcel is Bundlers which we use here.
 // Note-2: For import and export in jS we use ES6 modules and it works well because it's a javascript and browser understand it well
-//         but for import file from node module we use slightly diff syntax which work well no node like direct give file name for
+//         but for import file from node module we use slightly diff syntax which work well with node , like direct give file name for
 //         import like import React from "react" but Browser not understand this because React is a client side library and our
 //         node_modules is on server so this is a server syntax for import and if we import even from our node_module but or browser
 //         not server it using this sever import syntax..
