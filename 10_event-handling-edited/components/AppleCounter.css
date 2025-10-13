@@ -1,0 +1,18 @@
+section {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 4rem;
+  align-items: center;
+}
+
+button {
+  border-radius: 10px;
+  box-shadow: 2px 3px 4px black;
+  cursor: pointer;
+}
+
+button img {
+  max-width: 40px;
+}
