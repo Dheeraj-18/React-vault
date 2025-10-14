@@ -43,11 +43,9 @@
 // Note-7: SO, while we updating the state variable use setState that update only that node value not entire component 
 
 
-
-// 
 import { createRoot } from "react-dom/client";
 import App from "./App";
 
 const root = createRoot(document.querySelector('#root'))
 
-root.render(<App root={root}/>)
+root.render(<App/>)

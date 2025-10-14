@@ -10,7 +10,7 @@ const App = ({root}) => {
   return (
     <div>
 
-      <AppleCounter root={root} />
+      <AppleCounter/>
     </div>
   )
 }
