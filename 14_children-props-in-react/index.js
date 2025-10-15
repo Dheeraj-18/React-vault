@@ -9,7 +9,9 @@
 // Note-2: In React, the children prop is a special built-in prop that is automatically passed to every component.
 // It represents the content (elements, text, or components) that are written between the opening and closing tags of a component
 
-// Note-3: Benefits of the `children` prop in React
+// Note-3: If not pass anything and console.log(children) it give undefined 
+
+// Note-4: Benefits of the `children` prop in React
 
 //   1️⃣ Reusability:
 //     - We can create a single generic component that works with any type of inner content.
