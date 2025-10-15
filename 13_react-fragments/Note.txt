@@ -1,0 +1,13 @@
+//                                   <<<<<  React Fragments  >>>>>>
+
+// Note-1: In React, whenever a component returns more than one element, 
+//         it throws an error saying "JSX expressions must have one parent element". 
+//         To avoid this, React provides the <Fragment> component (or shorthand <> </>), 
+//         which acts as a wrapper to group multiple elements without adding an extra node to the DOM.
+//         In other words, React Fragments let us return multiple elements without introducing 
+//         unnecessary wrapper elements in the rendered HTML.
+
+// Note-2: when we console.log(Fragment) it give -->> Symbol(react.fragment)
+//         and console.log(typeof Fragment) it give --> symbol
+///        and console.log(<Fragment></Fragment>) it give --> React element which have type Symbol(react.fragment)
+//         refer note ->> Fragment-note.png 
