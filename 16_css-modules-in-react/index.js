@@ -1,0 +1,36 @@
+//                                   <<<<<  CSS Modules in React  >>>>>>
+
+// Note-1: In JSX, we can style components in two main ways: 
+//         (1) Using inline CSS by passing a JavaScript object inside {}, or 
+//         (2) Importing an external CSS file and using class names in our component. 
+//         
+//         However, there is a problem with the second approach (importing CSS files directly). 
+//         Once a CSS file is imported into a React application, its styles are loaded globally in the browser. 
+//         This means if multiple components use the same class name (e.g., "button"), 
+//         the styles from that CSS file will apply to all elements with that class name across components. 
+//         
+//         This global behavior can cause unintended style conflicts between components.
+
+// Note-2: The solution to the global CSS issue is **CSS Modules**. 
+//         CSS Modules allow us to scope CSS styles locally to a specific component. 
+//         To use them, we create a CSS file with the extension `.module.css` 
+//         and import it like this: 
+//             import styles from './Button.module.css';
+//         
+//         When we import a CSS Module, the bundler (like Webpack or Vite) processes the file 
+//         and returns an object where each class name becomes a unique property. 
+//         We can then access and apply styles using syntax like: 
+//             <button className={styles.button}>Click</button>
+//         
+//         Behind the scenes, CSS Modules automatically generate unique class names 
+//         (by adding hash-like modifiers), ensuring that the styles apply 
+//         **only** to the component where they are imported and not globally.
+
+
+
+import { createRoot } from "react-dom/client";
+import App from "./App";
+
+const root = createRoot(document.querySelector('#root'))
+
+root.render(<App/>)
