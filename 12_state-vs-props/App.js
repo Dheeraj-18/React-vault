@@ -6,10 +6,10 @@ import Counter from './components/Counter'
 
 // console.log(LeftArrow)
 
-const App = ({ root }) => {
+const App = () => {
   return (
     <div>
-      <Counter counterName ="Timer" />
+      <Counter counterName="Timer" />
       {/* <AppleCounter /> */}
     </div>
   )
