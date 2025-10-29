@@ -21,7 +21,7 @@
 //         things tree shaking , minification , code splitting , image optimization ...
 //      -> and it also add source map in .js file which they sever by giving in the src of script tag in index.html severing file
 //
-// Note-6: Now in all build tools and new react version allow we using react in our code without adding the import Rect when we write
+// Note-6: Now in all build tools and new react version allow we using react in our code without adding the import React when we write
 //         JSX it understand and import itself.
 // Note-7: But we need to import the react-dom library from  react-dom/client otherwise only with react-dom through error
 
