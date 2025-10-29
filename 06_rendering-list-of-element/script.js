@@ -1,7 +1,7 @@
 //                               Summary Note
 
 // Note-1: while we write command in package.json "scripts: there is no need to write "npx:, we use parcel index.html only , when we run this command
-//         i.e 'start' named command no need to us 'run' instead npm start works well
+//         i.e 'start' named command no need to use 'run' instead npm start works well
 
 // Note-2: We not pass multiple element in the render function by comma separated instead we allow to pass an array of element but it through an
 //         error that each element in the array sibling have unique
