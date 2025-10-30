@@ -7,7 +7,7 @@
 //         work same as onChange event. 
 // Note-3: Here in React event object is not same as javascript event object react use there own way to do it when we console log event object 
 //         it return a SyntheticBaseEvent like object but work same as we earlier use in js .
-// Note-4 We cannot apply event directly on React component it's work because it's a function which return JSX  not a HTML element and we 
+// Note-4 We cannot apply event directly on React component it not work because it's a function which return JSX  not a HTML element and we 
 //        apply event on only HTML element so when we apply event on component it pass as a prop then we apply on that returning element
 
 // Note-5: we write any name of the properties which we pass from component in prop bcz at the end it's just a argument which we pass to function
