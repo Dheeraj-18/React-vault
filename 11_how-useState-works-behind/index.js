@@ -56,6 +56,8 @@
 //         But no setState is pure synchronous it update value inside states array not the actual state variable value but after 
 //         the callback execution is finished state variable value is updated 
 
+// Note: useState updates are not synchronous. They behave like asynchronous, but technically it’s not exactly “async”, it’s just batched
+//       and scheduled by React.
 
 
 import { createRoot } from "react-dom/client";
