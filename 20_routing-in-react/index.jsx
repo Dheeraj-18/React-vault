@@ -50,6 +50,29 @@
 //         This way, we don't manually import and use <Header/> or <Footer/> inside every page component.
 //         Routing takes care of it, and we get perfect reusability + clean structure.
 
+// Note-6: After setting all routes using createBrowserRouter() and <RouterProvider/>,
+//         if we navigate using normal <a href="..."> anchor tags, the page will reload.
+//         But React is a **Single Page Application (SPA)**, so we do not want full page reloads.
+//         A full reload will destroy the current React state, components re-mount again,
+//         and the app feels like a normal website—not SPA.
+//
+//         To avoid reloads, React Router provides a special component: <Link>.
+//         <Link to="/about">About</Link>
+//
+//         The <Link> component looks like an anchor tag, but works differently internally:
+//         - It uses the History API (pushState, replaceState) behind the scenes.
+//         - So instead of refreshing the page, it *changes the URL in the browser*
+//           and updates the component tree accordingly — **without reloading**.
+//
+//         Example:
+//              // ❌ This will reload the page (not recommended):
+//              <a href="/about">About</a>
+//
+//              // ✅ This will navigate without reload (recommended):
+//              <Link to="/about">About</Link>
+//
+//         So, always use <Link> for navigation inside React apps.
+//         This makes the routing smooth and keeps the behaviour of SPA intact.
 
 
 
