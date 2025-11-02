@@ -1,6 +1,6 @@
 //                            Summary Note: Routing in React
 
-// Note-1: Our react is server only one single file i.e index.html from dist folder so for create multiple pages or we having route
+// Note-1: Our react is serve only one single file i.e index.html from dist folder so for create multiple pages or we having route
 //        between components we have library called react router dom (made by remix) so using that we create multiple pages and set 
 //        route configuration 
 
