@@ -1,0 +1,28 @@
+//                      useEffect() Hook Summary Notes
+
+// Note-1: Question: Why Do we Need useEffect hook in React =>
+//     Earlier we directly take data by import API file within the project but , Now we take data by fetching via sending request 
+//     to API for data and take in local variable but eventhough we send request using fetch but when we call API using fetch 
+//     it take time to take data after solving the promises bcz it's a async take till that our component is render and all map 
+//     and filter are on Empty array So we use State variable to to take data form API call and updata via setState But instead 
+//     doing this also cause a problem that every time we setState data in state variable our component in re-render and for each 
+//     update API called and it continuously flood our network request so for fix this issue we put the logic of fetch and update
+//     state using setState in the if condition by apply check only execute that logic when countriesData.length === 0 so no 
+//     this problem is solved 
+
+// Note-2: SO we clearly see in the Note-1 that we want to send network or fetch data logic code execute only once So for that useEffect
+//         Hook comes into the picture to solve this . 
+
+// Note-3: useEffect() Hook :> 
+//   1st use - In the useEffect(callback , Dependency_array) we pass two argument one is callback inside we put the logic we want to 
+//             execute (generally fetch ) if we put only callback so it call every time whenever out component is re-render of setState
+//             used but if we put a empty array it execute only once when first time our component render . 
+//             So , our callback inside the useEffect execute atleast one whatever we dependency we put in the array 
+//   2nd use - In the Dependency array we put the state variable separated by comma so whenever this state change this callback code is 
+//             run , this is the second use of useEffect So setState is use to create the State and useEffect it monitor the state .
+//   3rd use - third useCase of of useEffect is via cleanup function by returning inside the useEffect callback so if we want to 
+//             execute some piece of code while we unmount a component form the screen we put that code in the returning cleanup
+//             function , But in the Routing when we goes form one page to another this thing happen automatically 
+//           a) we use this cleanUp function majorly if we put any interval or event listener inside the the ussEffect but after
+//              unmount the component it still store in the memory of browser so but we clear it via cleanUp function So idea 
+//              is that we don't want any code related to the component while we unmount it 
