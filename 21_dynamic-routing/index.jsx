@@ -1,0 +1,140 @@
+//                            Summary Note: Dynamic Routing in React
+
+//                   -------------------------------------------------------------
+//                   🔥 STATIC ROUTING vs DYNAMIC ROUTING (React Router DOM v6)
+//                   -------------------------------------------------------------
+
+// 1) Static (Normal) Routing:
+// Path is fixed → Shows the same component always.
+// Use when the page content does NOT depend on dynamic data.
+//
+// Example:
+// <Route path="/about" element={<About />} />
+// <Route path="/contact" element={<Contact />} />
+//
+// - These pages are same for everyone.
+// - Used for About, Home, Contact, etc.
+// -------------------------------------------------------------
+
+
+// 2) Dynamic Routing:
+// Path contains a variable part (dynamic segment).
+// This segment STARTS with ":" and can change.
+//
+// Example:
+// <Route path="/:country" element={<CountryDetail />} />
+//
+// - Here `:country` is a dynamic segment.
+// - It allows us to open different pages using the same component,
+//   based on the value in the URL.
+//
+// Example URLs:
+//   /france
+//   /india
+//   /japan
+//
+// All of them use *one component* → <CountryDetail />
+// But the content changes based on the dynamic value.
+// -------------------------------------------------------------
+
+
+// 3) Why Dynamic Routing is Needed (Infinite Pages Concept):
+// Without dynamic routing:
+// If you had 1000 countries, you would need 1000 separate routes.
+// → Not possible.
+//
+// With dynamic routing:
+// One route handles infinite different pages:
+// <Route path="/:country" element={<CountryDetail />} />
+//
+// So even if app has 1,00,000 items → Still only 1 route needed.
+// This is why instructor said: "Dynamic routing gives infinite pages."
+// -------------------------------------------------------------
+
+
+// 4) Getting Dynamic Value in Component → useParams Hook:
+// useParams() reads dynamic values from the URL.
+//
+// Example inside CountryDetail component:
+// import { useParams } from "react-router-dom";
+//
+// const { country } = useParams();
+//
+// console.log(country); // If URL is /france → Output: "france"
+//
+// Note:
+// - useParams() always returns an OBJECT.
+// - Keys come from route names (like :country).
+// - Values come from the URL.
+// -------------------------------------------------------------
+
+
+// 5) Why useParams() returns an Object:
+// Because we may have multiple dynamic segments.
+//
+// Example:
+// <Route path="/product/:category/:id" element={<ProductPage />} />
+//
+// URL: /product/electronics/25
+// useParams() returns:
+// { category: "electronics", id: "25" }
+// -------------------------------------------------------------
+
+
+// ✅ HANDLING UNKNOWN / INVALID DYNAMIC ROUTE VALUES
+
+// Problem:
+// If a user enters a country in the URL that does not exist
+// Example: /country/xyzabc (which is not in your data)
+// The page may break because your API or dataset won't return data.
+//
+// Solution:
+// Show a "Not Found" page if the dynamic parameter does not match
+// any valid data.
+//
+// Steps:
+// 1) Create a NotFound component.
+// 2) Check if the data exists for the given param.
+// 3) If not, render <NotFound />.
+// -------------------------------------------------------------
+
+// 🧠 SIMPLE MEMORY TRICK:
+// ":" in route → Makes the URL dynamic.
+// Whatever comes in place of ":" → useParams() gives it to you.
+// -------------------------------------------------------------
+
+
+
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Contact from './components/Contact.jsx'
+import Home from './components/Home.jsx'
+import Error from './components/Error.jsx'
+import CountryDetail from './components/CountryDetail.jsx'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <Error/>,
+    children: [
+      {
+        path: '/',
+        element: <Home/>,
+      },
+      {
+        path: '/:country',
+        element: <CountryDetail />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+      },
+    ],
+  },
+])
+
+const root = createRoot(document.querySelector('#root'))
+
+root.render(<RouterProvider router={router} />)
