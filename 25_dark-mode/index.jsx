@@ -1,26 +1,43 @@
-//                            Summary Note: Pass Data using react router  ( state and useLocation() Hook )
+//                            Summary Note: dark mode by Lift up state  ( using Context and use )
 
-// Note-1: We are Doing Here some Network optimization!
-//       We fetch data on the our Home CountryList page and we again fetch same data by send network request on CountryDetail page
-//       so we Optimize that By using the concept pass-data-using react router
+// Note-1: First-approach : as we have already css of dark in App.css so we just toggle class 'dark' on body inside the onClick
+//         of button i.e <p></p> in header component and also implement local storage all these using state variable created by 
+//         useState() hook , but there is a
 
-// Note-2: we send data passing state on Link tag  react router give the facility so send data form one page to another by give the state jsx 
-//         attribute and send data by giving them and state only for Link tag and we take data on another page by useLocation() 
-//        Hook provided by react router that return object and that object contain our data which we pass
-// The location object looks like:
-// {
-//   pathname: "/Syria",
-//   search: "",
-//   hash: "",
-//   key: "abc123",
-//   state: { ...countryData }   <-- This is our passed data
-// }
+//         problem : when our component is render after page reload the button isn't clicked automatically.so even we 
+//                   implement localStorage it not persist while we reload so , 
 
-// Note-3: So React Router DOM gives us this feature of passing data using `state`,
-//         but behind the scene it actually uses the browser's `history.pushState()`
-//         API to store that state during navigation.
+//         Solution: we take out the logic of add class 'dark' on <body> outside the 
+//                  component and put in the if else check based upon on state value . 
+
+// Note-2: But in react there is not good practice to add classes on body using document API so, instead of this we add classes 
+//         on our main and header inside the jsx dynamically  <header className={`header-container ${isDark ? 'dark' : ''} `}> but
+
+//  Problem: we create this state variable inside the Header component so access only here  but also want to use this in other 
+//           main i.e countryList component to add classes using this state variable so we using the concept of "Lifting up the 
+//           state " i.e define the state  variable using useState() hook in their common parent component i.e here in this case
+//           <App/> component 
+
+// Note-3: Okk we define that state variable on their component but How we pass to both i.e <Header/> and <CountryList/> component 
+//         we pass directly pass this state as a prop on <Header/> but for others component which we render inside the <Outlet/> 
+//         So How we pass form their 
+
+// Note-4: So React Router DOM provide a property on <Outlet/> i.e context so inside this we pass anything and able to access in there 
+//         all component which are render inside the <Outlet/> in our case like <Home/> , <ComponentDetails/> 
+
+// Note-5: useOutletContext() hook: React route dom Provide hook to access the context property value inside the component which
+//                                  all are render under the <Outlet/> 
+
+// Note-6: Without using `context`, we would need to pass `isDark` from App → Home → Child → further
+//         components as props. This continuous passing of props through every level is called
+//         "prop drilling". To avoid this, React Router provides `Outlet context`, which allows us
+//         to directly share data (like isDark and setIsDark) with all nested components which are render under <Outlet/> w/o
+//         passing props manually.
 
 
+// Conclusion Note: still this is not a good way to use context we use React context API to do that bcz we avoid any declaration 
+//                 in our App.jsx so define a themeContext and import that data any where we want to use without passing as prop
+//                as we do now in app.jsx 
 
 
 
