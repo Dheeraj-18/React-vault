@@ -1,28 +1,111 @@
-//                      useEffect() Hook Summary Notes
+//                            Summary Note: Routing in React
 
-// Note-1: Question: Why Do we Need useEffect hook in React =>
-//     Earlier we directly take data by import API file within the project but , Now we take data by fetching via sending request 
-//     to API for data and take in local variable but eventhough we send request using fetch but when we call API using fetch 
-//     it take time to take data after solving the promises bcz it's a async take till that our component is render and all map 
-//     and filter are on Empty array So we use State variable to to take data form API call and updata via setState But instead 
-//     doing this also cause a problem that every time we setState data in state variable our component in re-render and for each 
-//     update API called and it continuously flood our network request so for fix this issue we put the logic of fetch and update
-//     state using setState in the if condition by apply check only execute that logic when countriesData.length === 0 so no 
-//     this problem is solved 
+// Note-1: Our react is serve only one single file i.e index.html from dist folder so for create multiple pages or we having route
+//        between components we have library called react router dom (made by remix) so using that we create multiple pages and set 
+//        route configuration 
 
-// Note-2: SO we clearly see in the Note-1 that we want to send network or fetch data logic code execute only once So for that useEffect
-//         Hook comes into the picture to solve this . 
+// Note-2: npm install react-router-dom@6  (Here in the video we use react router V6) but as now v7 is present and in there import
+//         and using syntax is quite different When we make project follow documentation or latest resources about V7 import syntax
+//
+// Note:3: So, after installing this react router library we import from there createBrowserRouter() method and <RouterProvide router={router}/>
+//         component we pass a array of route configuration in the createBrowserRouter() methods . 
 
-// Note-3: useEffect() Hook :> 
-//   1st use - In the useEffect(callback , Dependency_array) we pass two argument one is callback inside we put the logic we want to 
-//             execute (generally fetch ) if we put only callback so it call every time whenever out component is re-render of setState
-//             used but if we put a empty array it execute only once when first time our component render . 
-//             So , our callback inside the useEffect execute atleast one whatever we dependency we put in the array 
-//   2nd use - In the Dependency array we put the state variable separated by comma so whenever this state change this callback code is 
-//             run , this is the second use of useEffect So setState is use to create the State and useEffect it monitor the state .
-//   3rd use - third useCase of of useEffect is via cleanup function by returning inside the useEffect callback so if we want to 
-//             execute some piece of code while we unmount a component form the screen we put that code in the returning cleanup
-//             function , But in the Routing when we goes form one page to another this thing happen automatically 
-//           a) we use this cleanUp function majorly if we put any interval or event listener inside the the ussEffect but after
-//              unmount the component it still store in the memory of browser so but we clear it via cleanUp function So idea 
-//              is that we don't want any code related to the component while we unmount it 
+// Note-4: SO, if we want some component in multiple pages like we want header component is all pages so either we manually add 
+//         add <Header/> component in all  pages like in contact page and App home page all though it's a  good reusability bcz 
+//         in vanilla js we create multiple file and each file write again the code of header.But still this is not a good way to 
+//         reusability of 
+
+// Note-5: So, to avoid repeating a common component (like <Header/>) in every page component,
+//         react-router provides a concept called “Layout Route”. In this, we define a parent route
+//         whose element contains the common components. Then, inside that parent route, we define
+//         all other pages as children using the `children:` key in the route configuration array.
+//
+//         Example: The parent component (let’s call it <AppLayout/>) will contain Header, Footer,
+//         Sidebar, etc. AND in place where page specific content should appear, we use <Outlet/>.
+//         <Outlet/> works as a placeholder which will dynamically render whichever child route is
+//         currently active.
+//
+//         So our parent route looks like:
+//              {
+//                path: "/",
+//                element: <AppLayout/>,
+//                children: [
+//                    { path: "/", element: <Home/> },
+//                    { path: "/about", element: <About/> },
+//                    { path: "/contact", element: <Contact/> }
+//                ]
+//              }
+//
+//         And inside AppLayout component:
+//              function AppLayout(){
+//                  return(
+//                      <>
+//                        <Header/>
+//                        <Outlet/>   // --- Child Route Page Component will render here
+//                        <Footer/>
+//                      </>
+//                  );
+//              }
+//
+//         This way, we don't manually import and use <Header/> or <Footer/> inside every page component.
+//         Routing takes care of it, and we get perfect reusability + clean structure.
+
+// Note-6: After setting all routes using createBrowserRouter() and <RouterProvider/>,
+//         if we navigate using normal <a href="..."> anchor tags, the page will reload.
+//         But React is a **Single Page Application (SPA)**, so we do not want full page reloads.
+//         A full reload will destroy the current React state, components re-mount again,
+//         and the app feels like a normal website—not SPA.
+//
+//         To avoid reloads, React Router provides a special component: <Link>.
+//         <Link to="/about">About</Link>
+//
+//         The <Link> component looks like an anchor tag, but works differently internally:
+//         - It uses the History API (pushState, replaceState) behind the scenes.
+//         - So instead of refreshing the page, it *changes the URL in the browser*
+//           and updates the component tree accordingly — **without reloading**.
+//
+//         Example:
+//              // ❌ This will reload the page (not recommended):
+//              <a href="/about">About</a>
+//
+//              // ✅ This will navigate without reload (recommended):
+//              <Link to="/about">About</Link>
+//
+//         So, always use <Link> for navigation inside React apps.
+//         This makes the routing smooth and keeps the behaviour of SPA intact.
+
+
+
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Contact from './components/Contact.jsx'
+import Home from './components/Home.jsx'
+import Error from './components/Error.jsx'
+import CountryDetail from './components/CountryDetail.jsx'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <Error/>,
+    children: [
+      {
+        path: '/',
+        element: <Home/>,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+      },
+      {
+        path: '/country',
+        element: <CountryDetail />,
+      },
+    ],
+  },
+])
+
+const root = createRoot(document.querySelector('#root'))
+
+root.render(<RouterProvider router={router} />)

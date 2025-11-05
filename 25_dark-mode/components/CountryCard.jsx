@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function CountryCard(props) {
-  const { name, flag , population , region ,capital } = props
+  const { name, flag , population , region ,capital ,data } = props
   return (
-    <a href={`/country.html?name=${name.common}`} className="country-card">
+    <Link to={`/${name}`} className="country-card" state={data}>
       <img src={flag} alt={name + 'flag'} />
       <div className="card-text">
         <h3 className="card-title">{name}</h3>
@@ -17,6 +18,6 @@ export default function CountryCard(props) {
           <b>Capital: </b>{capital}
         </p>
       </div>
-    </a>
+    </Link>
   )
 }
