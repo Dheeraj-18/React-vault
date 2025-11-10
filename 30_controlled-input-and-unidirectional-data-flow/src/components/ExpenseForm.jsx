@@ -12,7 +12,7 @@ export default function ExpenseForm({ setExpenses }) {
       ...preState,
       { ...expense, id: crypto.randomUUID() },
     ])
-    setExpense({
+    setExpense({   // Here bcz we know our UI based upon state i.e one-way data binding  so here for reset form e.reset() not work so for that we empty our state variable 
       title: '',
       category: '',
       amount: '',
