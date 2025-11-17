@@ -1,61 +1,72 @@
-# Custom context Menu
+# Edit row Functionality in React 
 
 ## Summary Notes
-### Implement custom context menu using javascript event `OnContextMenu` by putting eventListener 
+### Concept Objective:- When the user right-clicks a row and selects the **Edit** option from the context menu, the data from that specific row should be populated into the form fields. The form button should then change its state from **Add** to **Save**. After the user updates the data and clicks **Save**, the modified row should be updated and reflected in the **expenses table**.
+---
 
+>**Note-1:** ***To implement the Edit row functionality first lift the state of `expense` into the app.jsx bcz we need this in our ExpenseTable Component to pass into the Context Menu or also in ExpenseForm, so we lift up and using concept of prop drilling we pass as prop to both these component and also take the `expenses` as prop in our ContextMenu to find out which row user want to edit***
 
-```
-const [menuPosition, setMenuPosition] = useState({})
-const [rowId, setRowId] = useState('')
-
-```  
-
-
->**Note-1:**  
-***To implement a custom context menu on table rows for edit and delete functionality, we use the `onContextMenu` event listener and call `e.preventDefault()` to disable the browser’s default context menu. The event object provides the click coordinates through `clientX` and `clientY`, which give the position from the left and top of the screen. We capture these values and store them in the `menuPosition` state using `setMenuPosition`. Then we pass this state as a prop to the `ContextMenu.jsx` component, where it is applied to the style of the custom context menu to render it exactly at the user’s click location.***
-
-
->**Note-2:**  
-***After receiving `menuPosition` and `setMenuPosition` in our `ContextMenu` component, we render the context menu **only when valid coordinates exist**. This ensures the menu appears only when the user has right-clicked. We add a check like `if (!menuPosition.left) return ;` to return early and prevent the `ContextMenu` component from rendering when the user has not clicked on a table row.***
+> 1. a) ***Before find out the row in `expenses` we make one more state in app.jsx  i.e ` const [editingRowId, setEditingRowId] = useState('')` and pass editingERowId as prop to the ExpenseForm.jsx component to make sure then when user is edit the row or they add New row so according to this they change the button form `Add` to `save` and we take `setEditingRowID()` updater in the contextMenu  to ExpenseTable as prop form app.jsx then we update `editingRowId` by `rowId` on which user click***
 
 ```
-     <tr
-         key={id}
-         onContextMenu={(e) => {
-           e.preventDefault()
-           setMenuPosition({ left: e.clientX + 4, top: e.clientY + 4 })
-           setRowId(id)
-         }}
-      >
-```              
+<button className="add-btn">{editingRowId ? 'Save' : 'Add'}</button>
+```
 
->**Note-3:**  
-***To implement the delete-row functionality, we take `setExpenses` state updater as a prop. We capture the unique `rowId` inside the `onContextMenu` callback when the context menu is triggered. Then, In the contextMenu component  inside `setExpenses`, we access the previous state (`prevState`) and filter out the row whose `id` not matches the selected `rowId`, which removes that row from the list.***
-
+>**Note-2** ***After lifting up the state we need to find out the the row by using rowID in the `expenses` using `find()` method on it then using setExpense() update the state of `expense`***
 
 ```
-export default function ContextMenu({ menuPosition, setMenuPosition ,setExpenses ,rowId }) {
-  if (!menuPosition.left) return
-  return (
     <div className="context-menu" style={menuPosition}>
       <div
         onClick={() => {
-          console.log('Editing')
-          setMenuPosition({})
+          const { title, category, amount } = expenses.find(   // find out the row on which user want to edit 
+            (expense) => expense.id === rowId
+          )
+          setEditingRowId(rowId)                        // update the editingRowId state to change the button from Add to Save
+          setExpense({ title, category, amount })       // Populate the editing row inside the form field 
+          setMenuPosition({})                      // as usual update state of context menu to disappear it
         }}
       >
         Edit
       </div>
-      <div
-        onClick={() => {
-          setExpenses((prevState)=> prevState.filter((expense)=>expense.id != rowId))
-          setMenuPosition({})
-        }}
-      >
-        Delete
-      </div>
-    </div>
-  )
-}
 
 ```
+> **Note-3** ***Now after edit the row we add this into our expense table but till now the above logic we implement if we add the row then it duplicate in the table but we want to edit the row and then changes will update in our expense table so in order to do that we modify the logic inside the `ExpenseForm` component in the `handleSubmit()` so bases upon the state of `editingRowId` we update the our `setExpenses` state by putting if(editingRowID) check on it and if we update it then after editing the row and update the state of `setExpenses` then return early from there bcz if editing the row then we no need to  run the logic of `setExpenses` which we update while the of when user `Add` a new Row***      
+
+```
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const validateResult = validate(expense)
+    if (Object.keys(validateResult).length) return
+
+    if (editingRowId) {                 // Editing row logic 
+      setExpenses((preState) =>
+        preState.map((prevExpense) => {               // map() on it to changes update on existing row of expense table
+          if (prevExpense.id === editingRowId) {
+            return { ...expense, id: editingRowId }
+          }
+          return prevExpense
+        })
+      )
+      setExpense({                                    // after save the row clear the form field 
+        title: '',
+        category: '',
+        amount: '',
+      })
+      setEditingRowId('')                            // update the state to change the button from save to Add
+      return                                        // and Early return while editing row No need to run below logic 
+    }
+
+    setExpenses((preState) => [               // update when User Add new Row in the expenseTable
+      ...preState,
+      { ...expense, id: crypto.randomUUID() },
+    ])
+    // Here bcz we know our UI change based upon state i.e one-way data binding  so here for reset form e.reset() not work so
+    //  for that we empty our state variable
+    setExpense({                                  
+      title: '',
+      category: '',
+      amount: '',
+    })
+  }
+
+  ```
