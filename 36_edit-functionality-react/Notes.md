@@ -70,3 +70,5 @@
   }
 
   ```
+
+>**Previous Bug issue resolve** : ***fix the reduce() method for total the amount of the expense table prev problem is that when we add a new row then a amount was concatenate into the current total amount bcz it treated as javascript string so we change the amount using parseInt() `const total = filteredData.reduce((accumulator, current) => accumulator + parseInt(current.amount), 0 )` and for check also put a one more validation rule in the the configArray add a regex patter for checking the No. must entered inside the amount Field***
