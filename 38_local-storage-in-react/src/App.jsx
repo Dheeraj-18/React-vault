@@ -6,7 +6,7 @@ import expenseData from './expenseData'
 import { useLocalStorage } from './hooks/useLocalStorage'
 
 function App() {
-  const [expense, setExpense] = useLocalStorage('expense',{
+  const [expense, setExpense] = useLocalStorage('expense', {
     title: '',
     category: '',
     amount: '',
