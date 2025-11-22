@@ -7,7 +7,9 @@ export default function Header() {
       <img src={viteLogo} alt="vite-logo" />
       <ul className="flex gap-4">
         <li>
-          <a className="text-blue-700 underline" href="/home">Home</a>
+          <a className="text-blue-700 underline" href="/home">
+            Home
+          </a>
         </li>
         <li>
           <a href="/about">About</a>
