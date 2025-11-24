@@ -9,7 +9,9 @@ export default function Header() {
       <ul className="flex gap-4">
         <li>
           <NavLink
-            className={({ isActive }) => isActive && "text-blue-700 underline"}
+            className={({ isActive }) =>
+              isActive ? "text-blue-700 underline" : ""
+            }
             to="/"
           >
             Home
@@ -17,7 +19,9 @@ export default function Header() {
         </li>
         <li>
           <NavLink
-            className={({ isActive }) => isActive && "text-blue-700 underline"}
+            className={({ isActive }) =>
+              isActive ? "text-blue-700 underline" : ""
+            }
             to="/about"
           >
             About
@@ -25,7 +29,9 @@ export default function Header() {
         </li>
         <li>
           <NavLink
-            className={({ isActive }) => isActive && "text-blue-700 underline"}
+            className={({ isActive }) =>
+              isActive ? "text-blue-700 underline" : ""
+            }
             to="/contact"
           >
             Contact
