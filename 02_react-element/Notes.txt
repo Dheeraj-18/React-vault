@@ -1,0 +1,54 @@
+//                                 Summary Notes : React Element <virtual DOM>
+
+// NOTE-1: For using a React library in JS file we use CDN link and also with that add a react-dom.development.js CDN bcz when we use React functionality
+//         it's not understand by the browser So, for that part handle by this for rendering the react elements 
+// NOTE-2: we add these second CDN react-dom.development.js because react use different place for development like android , ios , web , e.g React Native
+//         So here for web use this
+// NOTE-3: ByAdding this CDN we able to access the React and ReactDOM object in the js Environment for Development 
+// NOTE-3: Here in the React we use React.createElement(type,prop,children) syntax to create a **react element** React.createElement(type,{},children)
+// NOTE-4: SO after making a React Element for render in on browser we use createRoot methods on ReactDOM object so for we create a hardcode container 
+//         in our html then pass that container into the ReactDOM.createRoot(container), after all react element are push into this container . 
+// NOTE-5: .createRoot() method return a object on that object there is a method called .render() by doing this we render our react element on browser
+// NOTE-6: (in ./react-note-img)
+// In React, a React Element is actually a plain JavaScript object.
+// Among its properties, two are particularly important: `ref` and `$$typeof`.
+//
+//   $$typeof: Symbol.for('react.element')
+//   → The `$$typeof` property ensures the object is recognized as a valid React Element.
+//     It provides security because `Symbol` is a unique JavaScript type that cannot be
+//     serialized or transmitted via JSON. This prevents malicious scripts or APIs
+//     from injecting fake React elements or harmful data into the application.
+
+// NOTE-7:
+// We can pass an array of elements as the `children` argument in React.createElement().
+// There’s an important rule: all sibling elements within the same parent must have unique `key` values
+// in their props object (e.g., key={2}).
+//   However, elements under different parents can have the same key value —
+//   the key uniqueness rule only applies among siblings under the same parent.
+
+// NOTE-8:
+// React allows us to write everything — including HTML-like structures — in one place,
+// making UI creation easier compared to manual DOM manipulation in vanilla JavaScript.
+// However, when using React.createElement() directly, it still feels verbose compared to
+// simply writing HTML structure, which is why a simpler syntax was needed.
+
+
+// NOTE-9:
+// To simplify UI creation in React, JSX was introduced — it lets us write HTML-like syntax
+// directly inside JavaScript. 
+// Since browsers don’t understand JSX natively, a compiler like **Babel** converts JSX
+// into standard JavaScript function calls (React.createElement()) before it runs in the browser.
+// This conversion ensures the browser ultimately executes regular JavaScript code.
+
+// FINAL NOTE: (./react-virtual-dom.png)
+// In a normal HTML–CSS–JS setup, the entire webpage is part of a large DOM tree — 
+// the <body> element is the main container, and all other elements exist as its children
+// (and their nested children). You can see this structure by using console.dir(document).
+//
+// Similarly, React maintains its own Virtual DOM — a lightweight JavaScript
+// representation of the actual DOM. 
+// The Virtual DOM helps React efficiently update only the parts of the UI that change,
+// instead of re-rendering the entire page.
+
+
+//  __________________________________________________________________________________________________________________________________________
