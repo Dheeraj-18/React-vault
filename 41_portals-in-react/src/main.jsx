@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
-import Error from './components/Error.jsx'
+import Error from "./components/Error.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        index:true,
+        index: true,
         element: <Home />,
       },
       {
