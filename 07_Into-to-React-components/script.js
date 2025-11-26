@@ -32,17 +32,17 @@
 //                },
 //              }
 
-// React Component: Yey above is a React components SO react element which has 'type' function which return a JSX that React element
+// React Component: Yes above is a React components SO react element which has 'type' function which return a JSX that React element
 //                  is called React Component
 //       << The above line is Magic line which impress the interviewer show your inDepth Knowledge about React >>
 
 // Actual Definition : React Component is a javascript Function which name usually with capital latter which return a JSX that is called
-//                     React component Or form visual perspective Reusable piece of UI called react component
+//                     React component Or from visual perspective Reusable piece of UI called react component
 //
 
 // Note-5 : second-way :  we also do it same using React.createElement() refer---->  component.png
 
-// Note-6 : Third-way : crate React components using JSX and it work same behind the seem as React.createElement. refer -- compo-note2.png
+// Note-6 : Third-way : create React components using JSX and it work same behind the seem as React.createElement. refer -- compo-note2.png
 //       <Card
 //           title={product.title}
 //           key={product.id}
