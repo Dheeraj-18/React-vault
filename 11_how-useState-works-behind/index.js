@@ -52,7 +52,7 @@
 // Note-6: react behind the seen call itself that callback which we pass inside the setState function (i.e setCount) and update
 //         values in states array 
 
-// Note-7: It might seem time setState is asynchronous because after the callback execution done then new updated value is render 
+// Note-7: It might seem like setState is asynchronous because after the callback execution done then new updated value is render 
 //         But no setState is pure synchronous it update value inside states array not the actual state variable value but after 
 //         the callback execution is finished state variable value is updated 
 
