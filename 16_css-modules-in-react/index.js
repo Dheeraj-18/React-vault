@@ -24,7 +24,7 @@
 //         
 //         Behind the scenes, CSS Modules automatically generate unique class names 
 //         (by adding hash-like modifiers), ensuring that the styles apply 
-//         **only** to the component where they are imported and not globally.
+//         only to the component where they are imported and not globally.
 
 
 
