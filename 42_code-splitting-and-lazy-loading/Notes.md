@@ -53,7 +53,7 @@ Instead, we can simply use JavaScript’s dynamic `import()` to load the data fi
 The dynamic `import()` returns a Promise with the module object, and we can update the component state with the imported data once it resolves.
 
 
-
+---
 
 # **React Lazy & Suspense — Internal Working Notes**
 
@@ -77,7 +77,7 @@ React uses JavaScript’s dynamic `import()` along with React’s `lazy()` wrapp
 3. **Promise Resolves:** Once the code chunk downloads, the Promise resolves with the module.  
 4. **Final Render:** React extracts the `default` export and re-renders using the real component.
 
----
+
 
 ## **2. How `<Suspense>` Works with Lazy Components**
 
@@ -95,7 +95,6 @@ React uses JavaScript’s dynamic `import()` along with React’s `lazy()` wrapp
   Once the Promise resolves, React retries rendering, and the lazy component is now available.  
   The fallback UI disappears, and the actual component renders.
 
----
 
 ## **Why `<Suspense>` is Used (Benefits)**
 
