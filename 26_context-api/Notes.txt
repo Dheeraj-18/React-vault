@@ -1,1 +1,74 @@
-//                            Summary Note: dark mode by Lift up state  (using Context and useOutletContext() hook )
+//                      IMP_      Summary Note: Context API (useContext() hook)
+
+// Note-1: Earlier when we implement dark and light mode so we first lift up state but it cause prop-drilling to avoid this we use  
+//         the useOutletContext() hook and a context property on <Outlet/> but  behind the seen it use also  React context API but there is 
+//         also one issue with that we still pass data using Context property on <Outlet/> and also declare our state inside 
+//         Our App component which we want to  generally avoid in our App component.
+
+// Note-2: The problem with passing props:
+//         Passing props is a great way to explicitly pipe data through your UI tree to the components that use it.
+//         But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if 
+//         many components need the same prop. The nearest common ancestor could be far removed from the components that need data,
+//         and lifting state up that high can lead to a situation called “prop drilling”.
+
+// Note-3: Context: an alternative to passing props 
+//         step-1 React provide a function createContext() to create a context so when use this like 
+//                const ThemeContext = createContext() when we  console.log(ThemeContext) 
+//                   SO it return a object i.e shown in Note-createContext.png
+//
+// Note-4: But we use this variable or access by the hook  useContext(ThemeContext)  by passing it as argument then it return a value
+//         which we pass from the createContext() function so if we not pass it return undefined but we not pass a state form there 
+//         bcz State are only use inside the component of inside the hook only so How we pass our state ?
+
+// Note-5: So we console.log(ThemContext) in Note-3 it return a object and on that their is Provider property i.e a react component and 
+//         we use this i.e <ThemContext.Provider value = {}></ThemContext.Provider> with the use of this component we wrap our <app> component 
+//         inside which we use this context data and the value must be provided and any data we able to pass inside the value we use 
+//         by useContext(ThemeContext) hook , if we pass value form createContext('xyz') it can be override by this value = {} which we 
+//         give on our warper Provider component 
+//                         <ThemeContext.Provider value={[isDark, setIsDark]}>
+//                           <Header theme={[isDark, setIsDark]} />
+//                           <Outlet context={[isDark, setIsDark]} />
+//                         </ThemeContext.Provider>
+//        So Here we wrap  and we able to access data of value using useContext() hook in all component which are inside this warper
+//         
+// Note-6: SO now we Successfully implement our own context using context API and our app look like this 
+//                              <ThemeContext.Provider value={[isDark, setIsDark]}>
+//                               <Header />
+//                               <Outlet />
+//                             </ThemeContext.Provider>
+//        
+//       So Here all things works well but we want also that we not define our state variable inside the <App> component make our <app>
+//       component clean but mostly project still use this way we do above all but from avoid this and make our <App> component clean 
+//       there is a complexity we see now .
+
+// Note-7: So if we try to define our state variable inside the context folder i.e our ThemeContext.js but we not able to dot bcz we 
+//         declare or use state only inside the component or hook we see further in the course custom hooks so we use there but now 
+//         we make component as use there our state variable and from that component i.e ThemeProvider we return a ThemeContext.Provider
+//         component with value attribute and passing out state variable inside the value and one more thing in our <App> component 
+//         we use this component for warper and whatever we put inside this warper we use use as a children prop inside our ThemeProvider
+//         component and we use render this children component inside the returning component i.e ThemeContext.Provider
+//______________________________________________________________________________________________________________________________________________
+//       ThemeContext look like this                                  |    Now Our <App /> Component Look Like This 
+//                                                                    |
+//  import { createContext, useState } from 'react'                   |  export default function App() {
+//                                                                    |  {
+//  export const ThemeContext = createContext()                       |    return (
+//                                                                    |      <ThemeProvider>
+//  export function ThemeProvider({ children }) {                     |        <Header />
+//    const [isDark, setIsDark] = useState(                           |        <Outlet />
+//      JSON.parse(localStorage.getItem('isDarkMode'))                |      </ThemeProvider>
+//    )                                                               |    )
+//                                                                    |  }
+//    return (                                                        |
+//      <ThemeContext.Provider value={[isDark, setIsDark]}>           |
+//        {children}                                                  |
+//      </ThemeContext.Provider>                                      |
+//    )                                                               |
+//  }                                                                 |
+
+
+// Common use cases for the Context API include:
+// 1. Theme switching
+// 2. User authentication
+// 3. Language preferences
+// 4. Application-wide settings: Sharing configuration settings across the application
