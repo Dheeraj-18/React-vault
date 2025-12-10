@@ -72,3 +72,90 @@
 // 2. User authentication
 // 3. Language preferences
 // 4. Application-wide settings: Sharing configuration settings across the application
+
+//                                ===============================
+//                                  STATE MANAGEMENT NOTES
+//                                  Context API vs Redux Toolkit
+//                                ===============================
+
+// 1. Why Prop Drilling Is a Problem?
+// ----------------------------------
+// - Passing state through multiple levels becomes messy.
+// - Changing component structure breaks props flow.
+// - Many unrelated components receive props they don't need.
+
+// 2. Why Context API Seems Like a Solution?
+// -----------------------------------------
+// - Removes prop drilling completely.
+// - Any child can access shared state without passing props.
+// - Perfect for low-frequency, simple global values.
+//     -> theme
+//     -> language
+//     -> user/auth data
+
+// BUT...
+
+// 3. The Hidden Problem of Context API
+// -------------------------------------
+// - When a context value updates, ALL components using that context re-render.
+// - Even if only ONE component actually needs the state.
+// - Creates "Context Re-render Storm":
+//     -> Parent re-renders
+//     -> All consuming children re-render
+//     -> Sibling components re-render unnecessarily
+
+// Example:
+// <Provider value={{ count }}>
+//    <A />
+//    <B />   <-- Uses count
+//    <C />
+// </Provider>
+// If 'count' changes: A, B, C all re-render.
+
+// 4. Why This Becomes a REAL Problem?
+// -----------------------------------
+// - Large component trees (deep nesting)
+// - Frequent state updates (filters, inputs, API data, cart)
+// - Multiple different global states (auth, cart, filters, UI states)
+
+// Re-render chain slows the UI and becomes hard to maintain.
+
+// 5. Why Context Alone Is Not a State Management Library
+// -------------------------------------------------------
+// - No update optimization
+// - No slicing of state
+// - No middleware or devtools
+// - No way to prevent unnecessary re-renders
+
+// So: Context solves prop drilling,
+// BUT creates performance issues in medium/large apps.
+
+// 6. When Redux Toolkit Is Actually Needed
+// -----------------------------------------
+// Use Redux when:
+// - Many components across different branches need the same state.
+// - State updates frequently (search, filters, cart, dashboards).
+// - You manage multiple slices of state (auth, cart, filters, UI).
+// - You want selective re-renders.
+// - You want predictable, structured global state.
+
+// 7. How Redux Fixes All Context Problems
+// ----------------------------------------
+// - Components subscribe only to specific slices using useSelector():
+//     const cart = useSelector(state => state.cart)
+// - Only that component re-renders when its slice updates.
+// - No provider nesting.
+// - No prop drilling.
+// - No global re-render storms.
+// - Built-in DevTools, middleware, and clean architecture.
+
+// 8. Final Clear Rules (Golden Rules)
+// -----------------------------------
+// - useState → local UI state (component-level)
+// - useContext → simple, low-frequency global values
+// - Redux Toolkit → complex, shared, or frequently-updating global state
+
+// 9. One-Line Summary
+// -------------------
+// "Context removes prop drilling, Redux removes unnecessary re-renders and 
+// gives scalable global state architecture."
