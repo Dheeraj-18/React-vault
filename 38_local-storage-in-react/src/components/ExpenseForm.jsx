@@ -21,12 +21,10 @@ export default function ExpenseForm({
       {
         required: true,
         message: '*Please enter an amount',
-       
       },
       {
-         pattern: /^[1-9]\d*(\.\d+)?$/,
+        pattern: /^[1-9]\d*(\.\d+)?$/,
         message: '*Please enter a valid No.',
-       
       },
     ],
   }

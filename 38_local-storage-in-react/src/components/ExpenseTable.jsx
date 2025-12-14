@@ -50,7 +50,9 @@ export default function ExpenseTable({
                   viewBox="0 0 384 512"
                   className="arrow up-arrow"
                   onClick={() => {
-                    setSortCallback(()=>(a, b) => a.title.localeCompare(b.title))
+                    setSortCallback(
+                      () => (a, b) => a.title.localeCompare(b.title)
+                    )
                   }}
                 >
                   <title>Ascending</title>
@@ -62,7 +64,9 @@ export default function ExpenseTable({
                   viewBox="0 0 384 512"
                   className="arrow down-arrow"
                   onClick={() => {
-                    setSortCallback(()=>(a, b) => b.title.localeCompare(a.title))
+                    setSortCallback(
+                      () => (a, b) => b.title.localeCompare(a.title)
+                    )
                   }}
                 >
                   <title>Descending</title>

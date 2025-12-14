@@ -7,7 +7,7 @@ export default function ContextMenu({
   rowId,
   setExpense,
   expenses,
-  setEditingRowId
+  setEditingRowId,
 }) {
   if (!menuPosition.left) return
   return (
