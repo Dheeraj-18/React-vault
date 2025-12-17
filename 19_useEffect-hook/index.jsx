@@ -2,7 +2,7 @@
 
 // Note-1: Question: Why Do we Need useEffect hook in React =>
 //     Earlier we directly take data by import API file within the project but , Now we take data by fetching via sending request 
-//     to API for data and take in local variable but eventhough we send request using fetch but when we call API using fetch 
+//     to API for data and take in local variable but even though we send request using fetch but when we call API using fetch 
 //     it take time to take data after solving the promises bcz it's a async take till that our component is render and all map 
 //     and filter are on Empty array So we use State variable to to take data form API call and updata via setState But instead 
 //     doing this also cause a problem that every time we setState data in state variable our component in re-render and for each 
