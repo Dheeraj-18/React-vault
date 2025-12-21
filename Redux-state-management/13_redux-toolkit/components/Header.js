@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const CartIcon = new URL('../assets/cart-icon.svg',import.meta.url)
+const CartIcon = new URL('../assets/cart-icon.svg', import.meta.url)
 import { useSelector } from '../react-redux'
 
 export default function Header() {
