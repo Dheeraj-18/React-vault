@@ -18,7 +18,7 @@
 //
 // Note-4: But we use this variable or access by the hook  useContext(ThemeContext)  by passing it as argument then it return a value
 //         which we pass from the createContext() function so if we not pass it return undefined but we not pass a state form there 
-//         bcz State are only use inside the component of inside the hook only so How we pass our state ?
+//         bcz State are only use inside the component or inside the hook only so How we pass our state ?
 
 // Note-5: So we console.log(ThemContext) in Note-3 it return a object and on that their is Provider property i.e a react component and 
 //         we use this i.e <ThemContext.Provider value = {}></ThemContext.Provider> with the use of this component we wrap our <app> component 
