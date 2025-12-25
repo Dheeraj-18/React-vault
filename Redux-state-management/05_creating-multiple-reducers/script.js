@@ -16,10 +16,7 @@ const reducer = combineReducers({
   wishList: wishListReducer,
 })
 
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__?.()
-)
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__?.())
 
 console.log(store)
 
