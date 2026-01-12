@@ -12,7 +12,7 @@
 //         is the special code which understand by the browser but in browser network this request not shows bcz this is devtools request and on 
 //         network tab only page request are shown 
 
-// NOTE-5: SO, yes this source map file paly a crucial role while debugging in dev tools bcz it's redirects our original written code without sending 
+// NOTE-5: SO, yes this source map file play a crucial role while debugging in dev tools bcz it's redirects our original written code without sending 
 //         the request , only bcz of source map file 
 
 // NOTE_6: and there is a another senario even if add source map and generate a map file but if we disable setting from the browser i.e javascript
