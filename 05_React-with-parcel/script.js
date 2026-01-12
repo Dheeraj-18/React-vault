@@ -1,8 +1,8 @@
 //                                 Summary-Note
 
 // Note-1: Before this we use CDN link for using any library and also for rendering on browser use another library call react-dom
-//         Using CDN but inPractice this not good way , We use Bundlers which Bundle all necessary fils and make a single file and
-//         serve on browser . SO yes Parcel is Bundlers which we use here.
+//         Using CDN but inPractice this not good way , We use Bundlers which Bundle all necessary files and make a single file and
+//         serve on browser . SO yes Parcel is one of the Bundler which we use here.
 // Note-2: For import and export in jS we use ES6 modules and it works well because it's a javascript and browser understand it well
 //         but for import file from node module we use slightly diff syntax which work well with node , like direct give file name for
 //         import like import React from "react" but Browser not understand this because React is a client side library and our
