@@ -16,7 +16,7 @@
 // string it create a DOM elements of h1 type and all the props set as a attribute on that h1 element
 
 // NOTE-3: But if 'type' value is function means not function call only function name i.e Card so in this case render method call this function
-//         with passing the prop object as a arguments to that function which give in 'type' property
+//         with passing the props object as a arguments to that function which give in 'type' property
 
 // NOTE-4: one-way : react component
 //          {
