@@ -20,10 +20,10 @@
 //             So , our callback inside the useEffect execute atleast one whatever we dependency we put in the array 
 //   2nd use - In the Dependency array we put the state variable separated by comma so whenever this state change this callback code is 
 //             run , this is the second use of useEffect So setState is use to create the State and useEffect it monitor the state .
-//   3rd use - third useCase of of useEffect is via cleanup function by returning inside the useEffect callback so if we want to 
+//   3rd use - third useCase of  useEffect is via cleanup function by returning inside the useEffect callback so if we want to 
 //             execute some piece of code while we unmount a component form the screen we put that code in the returning cleanup
 //             function , But in the Routing when we goes form one page to another this thing happen automatically 
-//           a) we use this cleanUp function majorly if we put any interval or event listener inside the the ussEffect but after
+//           a) we use this cleanUp function majorly if we put any interval or event listener inside the the useEffect but after
 //              unmount the component it still store in the memory of browser so but we clear it via cleanUp function So idea 
 //              is that we don't want any code related to the component while we unmount it 
 
