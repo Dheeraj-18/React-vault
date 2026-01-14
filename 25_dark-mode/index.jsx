@@ -1,4 +1,4 @@
-//                            Summary Note: dark mode by Lift up state  ( using Context and useOutletContext() hook )
+//                            Summary Note: dark mode by Lift up state  ( using Context attribute  and useOutletContext() hook )
 
 // Note-1: First-approach : as we have already css of dark in App.css so we just toggle class 'dark' on body inside the onClick
 //         of button i.e <p></p> in header component and also implement local storage all these using state variable created by 
