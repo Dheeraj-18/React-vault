@@ -8,6 +8,7 @@
 
 >**Note-4 :** ***To extract data from a form, create a `FormData` object using `new FormData(e.target)`. This only works if every input in the form has a `name` attribute; without it, the field will not be included in the result. You can convert the `FormData` into a usable object using `Object.fromEntries(new FormData(e.target))`, or iterate over the data using `formData.entries()` to access key/value pairs.***
 
+
  
 ```jsx
   const getFromData = (form) => {
@@ -19,6 +20,8 @@
     return data
   }
 ```
+![Expense Tracker UI](./Expense-tracker-UI.png)
+
 ---
 | Topic | lecture | subtopic |
 |-----|----|------|
