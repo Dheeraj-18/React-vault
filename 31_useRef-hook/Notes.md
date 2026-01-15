@@ -38,6 +38,18 @@
 > ***We use `ref={myRef}` on an HTML element to directly reference its actual DOM node, and in practice, we usually initialize the ref as `useRef(null)` because leaving it uninitialized can sometimes cause errors (especially in TypeScript during compile time). Even though this method allows us to read values without re-rendering, we still often prefer using `useState` for forms because React is designed to re-render efficiently and controlled forms provide better synchronization with UI and validation. Another difference is that `useRef` creates a single ref value per variable, so for multiple fields we must create multiple refs, whereas with `useState` we can keep all form fields together in one state object and update them more conveniently.***
 
 
+```
+titleRef
+  |
+  ↓
+{ current }
+     |
+     ↓
+  DOM Node (input)
+     |
+     ↓
+  value / focus / style / className
+```
 
 ---
 | refs | state |
