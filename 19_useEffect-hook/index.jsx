@@ -4,7 +4,7 @@
 //     Earlier we directly take data by import API file within the project but , Now we take data by fetching via sending request 
 //     to API for data and take in local variable but even though we send request using fetch but when we call API using fetch 
 //     it take time to take data after solving the promises bcz it's a async take till that our component is render and all map 
-//     and filter are on Empty array So we use State variable to to take data form API call and updata via setState But instead 
+//     and filter are on Empty array So we use State variable to take data form API call and update via setState But instead 
 //     doing this also cause a problem that every time we setState data in state variable our component in re-render and for each 
 //     update API called and it continuously flood our network request so for fix this issue we put the logic of fetch and update
 //     state using setState in the if condition by apply check only execute that logic when countriesData.length === 0 so no 
@@ -14,10 +14,12 @@
 //         Hook comes into the picture to solve this . 
 
 // Note-3: useEffect() Hook :> 
-//   1st use - In the useEffect(callback , Dependency_array) we pass two argument one is callback inside we put the logic we want to 
-//             execute (generally fetch ) if we put only callback so it call every time whenever out component is re-render of setState
-//             used but if we put a empty array it execute only once when first time our component render . 
-//             So , our callback inside the useEffect execute atleast one whatever we dependency we put in the array 
+// 1st use - In useEffect(callback, dependency_array), we pass two arguments.
+//           One is the callback where we put the logic we want to execute
+//           (generally fetch). If we pass only the callback, it executes
+//           every time whenever our component re-renders (such as after state updates).
+//           But if we pass an empty dependency array, it executes only once
+//           when our component renders for the first time.
 //   2nd use - In the Dependency array we put the state variable separated by comma so whenever this state change this callback code is 
 //             run , this is the second use of useEffect So setState is use to create the State and useEffect it monitor the state .
 //   3rd use - third useCase of  useEffect is via cleanup function by returning inside the useEffect callback so if we want to 
