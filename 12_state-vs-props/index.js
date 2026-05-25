@@ -17,7 +17,7 @@
 // Although we able to modify the value of prop the pass from parent component but as per React pattern or standard props are
 // immutable and only for ready only
 
-// Note-3: There is a possibility that sates of parent component become props of there children So props can be a sate also sometime.
+// Note-3: There is a possibility that sates of parent component become props of there children So props can be a state also sometime.
 //         and there is also possible we use state and props both in our component there is no Hard and fast rule we only use state
 //         in our component or use only props in our component
 
