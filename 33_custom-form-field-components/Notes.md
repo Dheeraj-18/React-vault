@@ -45,7 +45,7 @@ export default function Select({label,id,name,value,onChange,error,options,defau
 
 ---
 
-## Implement Advance from validation
+## Implement Advance form validation
 
 **Note-1:** **_Earlier we for each field of form we write logic saperately check each by if condition but this repetitive logic so To improve it we Make a validationConfig Object of array or each field rule for email rule we use regex pattern to check the validity of email regex pattern that types is Object and on that object there is method called test() so with the use of that we check the validity of email_**
 
