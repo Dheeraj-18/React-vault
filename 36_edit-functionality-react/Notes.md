@@ -1,7 +1,7 @@
 # Edit row Functionality in React 
 
 ## Summary Notes
-### Concept Objective:- When the user right-clicks a row and selects the **Edit** option from the context menu, the data from that specific row should be populated into the form fields. The form button should then change its state from **Add** to **Save**. After the user updates the data and clicks **Save**, the modified row should be updated and reflected in the **expenses table**.
+### Concept Objective:- When the user right-clicks a row and selects the **Edit** option from the context menu, the data from that specific row should be populated into the form fields. The form button should  change its state from **Add** to **Save**. After the user updates the data and clicks **Save**, the modified row should be updated and reflected in the **expenses table**.
 ---
 
 >**Note-1:** ***To implement the Edit row functionality first lift the state of `expense` into the app.jsx bcz we need this in our ExpenseTable Component to pass into the Context Menu or also in ExpenseForm, so we lift up and using concept of prop drilling we pass as prop to both these component and also take the `expenses` as prop in our ContextMenu to find out which row user want to edit***
